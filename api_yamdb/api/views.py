@@ -46,6 +46,7 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data)
+        return Response('method wrong', status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
