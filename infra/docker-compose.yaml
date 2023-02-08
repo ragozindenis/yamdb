@@ -10,7 +10,7 @@ services:
       - ./.env
   web:
     container_name: web
-    image: bonbonb/yamdb:v1
+    image: bonbonb/yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
