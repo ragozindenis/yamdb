@@ -35,7 +35,7 @@ jobs:
     needs: tests
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2 
+        uses: actions/checkout@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1 
       - name: Login to Docker
@@ -62,9 +62,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
@@ -77,10 +74,3 @@ jobs:
             echo SECRET_KEY="${{ secrets.SECRET_KEY }}" >> .env
             echo SERVERNAMES=${{ secrets.SERVERNAMES }} >> .env
             sudo docker-compose up -d
-
-      - name: Migrations and collect static
-        run: |
-          docker-compose exec web python manage.py makemigrations
-          docker-compose exec web python manage.py migrate
-          docker-compose exec web python manage.py collectstatic --no-input
-
