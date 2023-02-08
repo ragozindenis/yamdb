@@ -1,12 +1,12 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .custom_routers import Put_method_not_allow
+from .custom_routers import PutMthodNotAllow
 from .views import (CategoryViewSet, CommentViewSet, GenreViewSet,
                     ReviewViewSet, TitleViewSet, UserViewSet,
                     get_tokens_for_user, signup_and_send_confirmation_code)
 
-router_no_put = Put_method_not_allow()
+router_no_put = PutMthodNotAllow()
 router_v1 = routers.DefaultRouter()
 router_no_put.register('users', UserViewSet, basename='user')
 router_v1.register('categories', CategoryViewSet, basename='category')
