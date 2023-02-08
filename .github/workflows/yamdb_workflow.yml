@@ -75,6 +75,6 @@ jobs:
             echo SERVERNAMES=${{ secrets.SERVERNAMES }} >> .env
             sudo docker-compose up -d
             docker container ls
-            docker-compose exec web python manage.py makemigrations
-            docker-compose exec web python manage.py migrate
-            docker-compose exec web python manage.py collectstatic --no-input
+            docker-compose exec -T web python manage.py makemigrations
+            docker-compose exec -T web python manage.py migrate
+            docker-compose exec -T web python manage.py collectstatic --no-input
