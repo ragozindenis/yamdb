@@ -87,7 +87,7 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: ${{ github.workflow }} успешно выполнен(tests)!
+        message: ${{ github.workflow }} тесты успешно выполнены!
 
   send_message:
     runs-on: ubuntu-latest
@@ -98,4 +98,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: ${{ github.workflow }} успешно выполнен(deploy)!
+        message: ${{ github.workflow }} deploy успешно выполнен!
