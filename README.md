@@ -47,14 +47,18 @@ docker --version
 ```
 docker compose version
 ```
-4. Копируем файлы docker-compose.yaml и nginx/default.conf с загруженного репозитария на сервер:
+4. Создаем папку на сервере:
+```
+mkdir nginx
+```
+5. Копируем файлы docker-compose.yaml и nginx/default.conf с загруженного репозитария на сервер:
 ```
 scp <путь до файла на локальной машине>/<файл> <ваш_username>@<ip/host удаленного сервера>:/home/<ваш_username>/
 ```
 пример:
 ```
 scp /Users/user/Dev/yamdb_final/infra/docker-compose.yaml admin@127.0.0.1:/home/admin/
-scp /Users/user/Dev/yamdb_final/infra/nginx/default.conf admin@127.0.0.1:/home/admin/
+scp /Users/user/Dev/yamdb_final/infra/nginx/default.conf admin@127.0.0.1:/home/admin/nginx/
 ```
 ### 3. Работа с секретами на сайте github:
 Перейдите в настройки репозитория Settings, выберите на панели слева Secrets and variables/Actions, нажмите New repository secret и создавайте секреты
@@ -82,18 +86,18 @@ USER # имя пользователя для подключения к серв
 ### 5. Идем на сервер для заключительных команд:
 > Сделать миграции командами:
 ```
-docker-compose exec web python manage.py makemigrations
+sudo docker-compose exec web python manage.py makemigrations
 ```
 ```
-docker-compose exec web python manage.py migrate
+sudo docker-compose exec web python manage.py migrate
 ```
 > Собрать статичные файлы командой:
 ```
-docker-compose exec web python manage.py collectstatic --no-input
+sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 > Создать суперпользователя командой:
 ```
-docker-compose exec web python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
 > Админ панель доступна по адресу:
 ```
