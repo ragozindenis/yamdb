@@ -103,3 +103,7 @@ sudo docker-compose exec web python manage.py createsuperuser
 ```
 /admin/
 ```
+### Проект можно посмотреть по адрессу:
+```
+51.250.64.236
+```
