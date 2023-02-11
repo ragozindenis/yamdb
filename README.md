@@ -107,4 +107,3 @@ sudo docker-compose exec web python manage.py createsuperuser
 ```
 51.250.64.236
 ```
-
