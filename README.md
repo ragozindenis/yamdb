@@ -105,5 +105,5 @@ sudo docker-compose exec web python manage.py createsuperuser
 ```
 ## Проект можно посмотреть по адрессу:
 ```
-http://51.250.64.236/redoc/
+http://51.250.69.206/redoc/
 ```
